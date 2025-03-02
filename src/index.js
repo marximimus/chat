@@ -61,11 +61,12 @@ function displayRelativeDate(element, time) {
         ans = new Intl.DateTimeFormat(["en-US"], {
             dateStyle: "long",
         }).format(time);
-        nextUpdate = ((daysPassed + 1) * 24 * 60 * 60 * 1000 - timePassed);
+        nextUpdate = null;
     }
     element.innerText = ans;
-    const epsilon = 10;
-    setTimeout(displayRelativeDate, nextUpdate + epsilon, element, time);
+    if (nextUpdate !== null) {
+        setTimeout(displayRelativeDate, nextUpdate, element, time);
+    }
 }
 
 /**
