@@ -35,37 +35,37 @@ input.addEventListener("keydown", (event) => {
  */
 
 function displayRelativeDate(element, time) {
-	const timePassed = Date.now() - time.getTime();
-	const secondsPassed = Math.floor(timePassed / 1000);
-	const minutesPassed = Math.floor(secondsPassed / 60);
-	const hoursPassed = Math.floor(minutesPassed / 60);
-	const daysPassed = Math.floor(hoursPassed / 24);
-	let ans;
-	let nextUpdate;
-	if (minutesPassed === 0) {
-		ans = "Now";
-		nextUpdate = (60 * 1000 - timePassed);
-	} else if (hoursPassed === 0) {
-		ans = `${minutesPassed} minute${minutesPassed > 1 ? "s" : ""} ago`;
-		nextUpdate = ((minutesPassed + 1) * 60 * 1000 - timePassed);
-	} else if (daysPassed === 0) {
-		ans = `${hoursPassed} hour${hoursPassed > 1 ? "s" : ""} ago`;
-		nextUpdate = ((hoursPassed + 1) * 60 * 60 * 1000 - timePassed);
-	} else if (daysPassed < 7) {
-		if (daysPassed == 1) {
-			ans = `Yesterday`;
-		} else
-			ans = `Last ${new Intl.DateTimeFormat(["en-US"], { weekday: "long" }).format(time)}`;
-		nextUpdate = ((daysPassed + 1) * 24 * 60 * 60 * 1000 - timePassed);
-	} else {
-		ans = new Intl.DateTimeFormat(["en-US"], {
-			dateStyle: "long",
-		}).format(time);
-		nextUpdate = ((daysPassed + 1) * 24 * 60 * 60 * 1000 - timePassed);
-	}
-	element.innerText = ans;
-	const epsilon = 10;
-	setTimeout(displayRelativeDate, nextUpdate + epsilon, element, time);
+    const timePassed = Date.now() - time.getTime();
+    const secondsPassed = Math.floor(timePassed / 1000);
+    const minutesPassed = Math.floor(secondsPassed / 60);
+    const hoursPassed = Math.floor(minutesPassed / 60);
+    const daysPassed = Math.floor(hoursPassed / 24);
+    let ans;
+    let nextUpdate;
+    if (minutesPassed === 0) {
+        ans = "Now";
+        nextUpdate = (60 * 1000 - timePassed);
+    } else if (hoursPassed === 0) {
+        ans = `${minutesPassed} minute${minutesPassed > 1 ? "s" : ""} ago`;
+        nextUpdate = ((minutesPassed + 1) * 60 * 1000 - timePassed);
+    } else if (daysPassed === 0) {
+        ans = `${hoursPassed} hour${hoursPassed > 1 ? "s" : ""} ago`;
+        nextUpdate = ((hoursPassed + 1) * 60 * 60 * 1000 - timePassed);
+    } else if (daysPassed < 7) {
+        if (daysPassed == 1) {
+            ans = `Yesterday`;
+        } else
+            ans = `Last ${new Intl.DateTimeFormat(["en-US"], { weekday: "long" }).format(time)}`;
+        nextUpdate = ((daysPassed + 1) * 24 * 60 * 60 * 1000 - timePassed);
+    } else {
+        ans = new Intl.DateTimeFormat(["en-US"], {
+            dateStyle: "long",
+        }).format(time);
+        nextUpdate = ((daysPassed + 1) * 24 * 60 * 60 * 1000 - timePassed);
+    }
+    element.innerText = ans;
+    const epsilon = 10;
+    setTimeout(displayRelativeDate, nextUpdate + epsilon, element, time);
 }
 
 /**
@@ -73,21 +73,21 @@ function displayRelativeDate(element, time) {
  * @param {string} chatName
  */
 function createHistoryEntry(chatName) {
-	const chatTime = new Date;
-	const element = document.createElement("div");
-	const history = /** @type {HTMLDivElement} */ (document.getElementById("history-list"));
-	history.appendChild(element);
+    const chatTime = new Date;
+    const element = document.createElement("div");
+    const history = /** @type {HTMLDivElement} */ (document.getElementById("history-list"));
+    history.appendChild(element);
 
-	const chatNameElement = document.createElement("div");
-	chatNameElement.classList.add("medium-2", "color-primary");
-	element.appendChild(chatNameElement);
-	chatNameElement.innerText = chatName;
+    const chatNameElement = document.createElement("div");
+    chatNameElement.classList.add("medium-2", "color-primary");
+    element.appendChild(chatNameElement);
+    chatNameElement.innerText = chatName;
 
-	const time = document.createElement("div");
-	time.classList.add("caption", "color-secondary");
-	element.appendChild(time);
+    const time = document.createElement("div");
+    time.classList.add("caption", "color-secondary");
+    element.appendChild(time);
 
-	displayRelativeDate(time, chatTime);
+    displayRelativeDate(time, chatTime);
 }
 
 createHistoryEntry("ThisChat");
