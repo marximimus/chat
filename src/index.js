@@ -69,9 +69,10 @@ function displayRelativeDate(element, time) {
     }
 }
 
-
-const trashBin = /** @type {HTMLElement} */ (document.getElementById("trash-bin"));
-trashBin.remove();
+const trashBin = (() => {
+    const template = /** @type {HTMLTemplateElement} */ (document.getElementById("trash-bin"));
+    return /** @type {HTMLElement} */ (template.content.firstElementChild);
+})();
 
 /**
  *
