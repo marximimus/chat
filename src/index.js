@@ -74,35 +74,37 @@ const trashBin = (() => {
     return /** @type {HTMLElement} */ (template.content.firstElementChild);
 })();
 
+const historyList = /** @type {HTMLDivElement} */ (document.getElementById("history-list"));
+
 /**
- *
- * @param {string} chatName
+ * @param {string} id
+ * @param {string} name
  */
-function createHistoryEntry(chatName) {
+function createHistoryEntry(id, name) {
     const chatTime = new Date;
-    const history = /** @type {HTMLDivElement} */ (document.getElementById("history-list"));
-    const holder = document.createElement("div");
-    history.appendChild(holder);
-    const captions = document.createElement("div");
-    holder.appendChild(captions);
+    const entry = document.createElement("div");
+    historyList.appendChild(entry);
+    const link = document.createElement("a");
+    link.href = `/chat/${encodeURIComponent(id)}`;
+    entry.appendChild(link);
 
     const chatNameElement = document.createElement("div");
     chatNameElement.classList.add("medium-2", "color-primary");
-    captions.appendChild(chatNameElement);
-    chatNameElement.innerText = chatName;
+    link.appendChild(chatNameElement);
+    chatNameElement.innerText = name;
 
     const time = document.createElement("div");
     time.classList.add("caption", "color-secondary");
-    captions.appendChild(time);
-    holder.addEventListener("mouseenter", () => {
-        holder.appendChild(trashBin);
+    link.appendChild(time);
+    entry.addEventListener("mouseenter", () => {
+        entry.appendChild(trashBin);
     });
-    holder.addEventListener("mouseleave", () => {
+    entry.addEventListener("mouseleave", () => {
         trashBin.remove();
     });
 
     displayRelativeDate(time, chatTime);
 }
 
-createHistoryEntry("ThisChat");
-createHistoryEntry("AnotherChat");
+createHistoryEntry("chat-1", "This Chat");
+createHistoryEntry("chat-2", "Another Chat");
