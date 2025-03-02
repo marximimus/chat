@@ -15,6 +15,36 @@
                 font-family: 'Geist', sans-serif;
             }
 
+            .color-primary {
+                color: #fff;
+            }
+
+            .color-secondary {
+                color: #b3b3b3;
+            }
+
+            .medium-1 {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 150%;
+                letter-spacing: -0.02em;
+                font-feature-settings: 'ss02' on, 'ss03' on, 'ss04' on, 'ss05' on;
+            }
+
+            .medium-2 {
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 140%;
+                letter-spacing: -0.02em;
+                font-feature-settings: 'ss02' on, 'ss03' on, 'ss04' on;
+            }
+
+            .caption {
+                font-size: 12px;
+                line-height: 135%;
+                font-feature-settings: 'ss02' on, 'ss03' on;
+            }
+
             body {
                 background: #1d1d1d;
                 display: flex;
@@ -23,24 +53,26 @@
             }
 
 			#history {
-				width: 120px;
-				color: #BFBFBF;
+				width: 260px;
+				background-color: #212121;
+				border-right: 1px solid #FFFFFF24;
 			}
+
+            #history-header {
+                height: 64px;
+                display: flex;
+                align-items: center;
+                padding: 0 16px;
+                border-bottom: 1px solid #FFFFFF24;
+            }
 
 			#history-list > * {
-				border: 1px solid #FFFFFF24;
-				border-radius: 2px;
-				background-color: #262626;
-				margin: 2px;
-				padding: 4px;
-			}
-
-			.history-entry-chat-name {
-				font-size: 16px;
-			}
-
-			.history-entry-time {
-				font-size: 14px;
+                border-bottom: 1px solid #FFFFFF24;
+                height: 56px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 0 16px;
 			}
 
             #chat {
@@ -107,7 +139,7 @@
     </head>
     <body>
         <div id="history">
-            <div id="history-title">Historia</div>
+            <div id="history-header" class="medium-1 color-primary">Historia</div>
             <div id="history-list"></div>
         </div>
         <div id="chat">
