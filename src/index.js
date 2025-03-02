@@ -69,24 +69,36 @@ function displayRelativeDate(element, time) {
     }
 }
 
+
+const trashBin = /** @type {HTMLElement} */ (document.getElementById("trash-bin"));
+trashBin.remove();
+
 /**
  *
  * @param {string} chatName
  */
 function createHistoryEntry(chatName) {
     const chatTime = new Date;
-    const element = document.createElement("div");
     const history = /** @type {HTMLDivElement} */ (document.getElementById("history-list"));
-    history.appendChild(element);
+    const holder = document.createElement("div");
+    history.appendChild(holder);
+    const captions = document.createElement("div");
+    holder.appendChild(captions);
 
     const chatNameElement = document.createElement("div");
     chatNameElement.classList.add("medium-2", "color-primary");
-    element.appendChild(chatNameElement);
+    captions.appendChild(chatNameElement);
     chatNameElement.innerText = chatName;
 
     const time = document.createElement("div");
     time.classList.add("caption", "color-secondary");
-    element.appendChild(time);
+    captions.appendChild(time);
+    holder.addEventListener("mouseenter", () => {
+        holder.appendChild(trashBin);
+    });
+    holder.addEventListener("mouseleave", () => {
+        trashBin.remove();
+    });
 
     displayRelativeDate(time, chatTime);
 }
