@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            @font-face {
+                font-family: 'Geist';
+                src: url('/fonts/geist.woff2');
+            }
+
+            *, ::before, ::after {
+                box-sizing: border-box;
+                font-family: 'Geist', sans-serif;
+            }
+
+            body {
+                background: #1d1d1d;
+                display: flex;
+                height: 100vh;
+                margin: 0;
+            }
+
+            body > * {
+                height: 100%;
+            }
+
+            #chat {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 16px;
+            }
+
+            #chat > * {
+                width: 100%;
+                max-width: 680px;
+            }
+
+            #disclaimer {
+                font-family: 'Geist';
+                font-style: normal;
+                font-weight: 84;
+                font-size: 14px;
+                line-height: 140%;
+                letter-spacing: -0.02em;
+                font-feature-settings: 'ss02' on, 'ss03' on;
+                color: #BFBFBF;
+                text-align: center;
+                margin-bottom: 36px;
+            }
+
+            #messages {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                margin-bottom: 16px;
+            }
+
+            .human, .ai {
+                font-size: 14px;
+                line-height: 140%;
+                font-feature-settings: 'ss02' on, 'ss03' on;
+            }
+
+            .human {
+                color: #a6a6a6;
+            }
+
+            .ai {
+                color: #fff;
+            }
+
+            #input {
+                background: #262626;
+                border-radius: 4px;
+                border: 0.5px solid #FFFFFF24;
+                padding: 12px;
+                position: sticky;
+                bottom: 16px;
+            }
+
+            #input[data-empty]::before {
+                content: "Napisz wiadomość";
+            }
+        </style>
+    </head>
+    <body>
+        <div id="history">
+            <div id="history-title">Historia</div>
+            <div id="history-list"></div>
+        </div>
+        <div id="chat">
+            <div id="disclaimer">Odpowiedzi są generowane lokalnie. Konwersacje nie są przechowywane ani przetwarzane.</div>
+            <div id="messages">
+                <div class="human">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+                </div>
+                <div class="ai">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+                </div>
+            </div>
+            <div id="input" contenteditable="true" data-empty></div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
