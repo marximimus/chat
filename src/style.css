@@ -62,8 +62,23 @@ button {
     height: 64px;
     display: flex;
     align-items: center;
-    padding: 0 16px;
     border-bottom: 1px solid #FFFFFF24;
+}
+
+#history-header-text {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    flex-grow: 1;
+}
+
+#add-new-chat-button {
+    margin: 0 16px;
+    color: #FFF
+}
+
+#add-new-chat:hover {
+    color: #FF5F42;
 }
 
 #history-list > * {

@@ -106,5 +106,13 @@ function createHistoryEntry(id, name) {
     displayRelativeDate(time, chatTime);
 }
 
-createHistoryEntry("chat-1", "This Chat");
-createHistoryEntry("chat-2", "Another Chat");
+trashBin.addEventListener("click", () => {
+    const entry = /** @type {HTMLElement} */ (trashBin.parentElement);
+    entry.remove();
+    // TODO: add code to remove the actual chat, not only the history entry.
+});
+
+const addNewChatButton = /** @type {HTMLElement} */ (document.getElementById("add-new-chat-button"));
+addNewChatButton.addEventListener("click", () => {
+    createHistoryEntry("new-id", "name");
+});
