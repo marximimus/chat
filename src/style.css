@@ -54,8 +54,9 @@ button {
 
 #history {
     width: 260px;
-    background-color: #212121;
+    background: #212121;
     border-right: 1px solid #FFFFFF24;
+    overflow-y: auto;
 }
 
 #history-header {
@@ -63,6 +64,9 @@ button {
     display: flex;
     align-items: center;
     border-bottom: 1px solid #FFFFFF24;
+    position: sticky;
+    top: 0;
+    background: #212121;
 }
 
 #history-header-text {
